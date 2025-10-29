@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Archipiélago de Las Perlas</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #a0e9ff, #ffffff);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  header {
+    background-color: #0077b6;
+    color: white;
+    padding: 20px 0;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .mapa {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    margin: 30px auto;
+    height: 400px;
+    background-color: #90e0ef;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+  .isla {
+    position: absolute;
+    background-color: #ffde7d;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .isla:hover {
+    transform: scale(1.5);
+  }
+  #quiz {
+    margin: 30px auto;
+    width: 80%;
+    max-width: 500px;
+    text-align: left;
+    background: #caf0f8;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  button {
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  button:hover {
+    background-color: #023e8a;
+  }
+  .respuesta {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<header>Archipiélago de Las Perlas</header>
+
+<div class="mapa">
+  <div class="isla" style="top: 50px; left: 80px;" onclick="alert('Isla Contadora: famosa por sus playas y hoteles.')"></div>
+  <div class="isla" style="top: 150px; left: 200px;" onclick="alert('Isla San José: conocida por su biodiversidad.')"></div>
+  <div class="isla" style="top: 250px; left: 350px;" onclick="alert('Isla Saboga: ideal para ecoturismo.')"></div>
+  <div class="isla" style="top: 100px; left: 400px;" onclick="alert('Isla Chapera: pequeña pero muy visitada.')"></div>
+</div>
+
+<div id="quiz">
+  <h2>Mini Quiz</h2>
+  <p>¿Cuál de estas islas es famosa por sus playas y hoteles?</p>
+  <input type="radio" name="q1" value="Contadora"> Contadora<br>
+  <input type="radio" name="q1" value="San José"> San José<br>
+  <input type="radio" name="q1" value="Saboga"> Saboga<br>
+  <button onclick="checarRespuesta()">Verificar respuesta</button>
+  <div class="respuesta" id="resultado"></div>
+</div>
+
+<script>
+function checarRespuesta() {
+  const radios = document.getElementsByName('q1');
+  let respuesta = '';
+  for (let r of radios) {
+    if (r.checked) {
+      respuesta = r.value;
+    }
+  }
+  const resDiv = document.getElementById('resultado');
+  if (respuesta === 'Contadora') {
+    resDiv.textContent = '¡Correcto! Contadora es famosa por sus playas y hoteles.';
+    resDiv.style.color = 'green';
+  } else if (respuesta === '') {
+    resDiv.textContent = 'Por favor selecciona una opción.';
+    resDiv.style.color = 'orange';
+  } else {
+    resDiv.textContent = 'Incorrecto. Intenta de nuevo.';
+    resDiv.style.color = 'red';
+  }
+}
+</script>
+
+</body>
+</html>
