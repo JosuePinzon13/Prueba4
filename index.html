@@ -5,19 +5,40 @@
 <title>Archipiélago de Las Perlas</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     background: linear-gradient(to bottom, #a0e9ff, #ffffff);
     margin: 0;
     padding: 0;
     text-align: center;
+    color: #023047;
   }
+
   header {
     background-color: #0077b6;
     color: white;
     padding: 20px 0;
     font-size: 2em;
     font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   }
+
+  .descripcion {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 700px;
+    background: #caf0f8;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .descripcion img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
   .mapa {
     position: relative;
     width: 80%;
@@ -28,6 +49,7 @@
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
   }
+
   .isla {
     position: absolute;
     background-color: #ffde7d;
@@ -38,30 +60,57 @@
     transition: transform 0.3s;
   }
   .isla:hover {
-    transform: scale(1.5);
+    transform: scale(1.3);
   }
+
+  /* Tooltip */
+  .isla::after {
+    content: attr(data-info);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .isla:hover::after {
+    opacity: 1;
+  }
+
   #quiz {
     margin: 30px auto;
     width: 80%;
     max-width: 500px;
     text-align: left;
-    background: #caf0f8;
+    background: #e0fbfc;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
+
   button {
     background-color: #0077b6;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 14px;
     margin-top: 10px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 6px;
+    font-weight: bold;
   }
+
   button:hover {
     background-color: #023e8a;
   }
+
   .respuesta {
     margin-top: 10px;
     font-weight: bold;
@@ -71,42 +120,56 @@
 <body>
 <header>Archipiélago de Las Perlas</header>
 
+<div class="descripcion">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Contadora_Island_Beach.jpg" alt="Isla Contadora">
+  <p>El <strong>Archipiélago de Las Perlas</strong> está ubicado en el Golfo de Panamá y está conformado por más de 200 islas e islotes. 
+  Se caracteriza por sus playas de arena blanca, aguas cristalinas y gran biodiversidad marina. 
+  Algunas de las islas más conocidas son <em>Contadora</em>, <em>San José</em>, <em>Saboga</em> y <em>Chapera</em>.</p>
+</div>
+
 <div class="mapa">
-  <div class="isla" style="top: 50px; left: 80px;" onclick="alert('Isla Contadora: famosa por sus playas y hoteles.')"></div>
-  <div class="isla" style="top: 150px; left: 200px;" onclick="alert('Isla San José: conocida por su biodiversidad.')"></div>
-  <div class="isla" style="top: 250px; left: 350px;" onclick="alert('Isla Saboga: ideal para ecoturismo.')"></div>
-  <div class="isla" style="top: 100px; left: 400px;" onclick="alert('Isla Chapera: pequeña pero muy visitada.')"></div>
+  <div class="isla" style="top: 60px; left: 90px;" data-info="Isla Contadora"></div>
+  <div class="isla" style="top: 150px; left: 220px;" data-info="Isla San José"></div>
+  <div class="isla" style="top: 250px; left: 340px;" data-info="Isla Saboga"></div>
+  <div class="isla" style="top: 100px; left: 430px;" data-info="Isla Chapera"></div>
 </div>
 
 <div id="quiz">
   <h2>Mini Quiz</h2>
-  <p>¿Cuál de estas islas es famosa por sus playas y hoteles?</p>
+  <p><strong>1.</strong> ¿Cuál de estas islas es famosa por sus playas y hoteles?</p>
   <input type="radio" name="q1" value="Contadora"> Contadora<br>
   <input type="radio" name="q1" value="San José"> San José<br>
-  <input type="radio" name="q1" value="Saboga"> Saboga<br>
-  <button onclick="checarRespuesta()">Verificar respuesta</button>
+  <input type="radio" name="q1" value="Saboga"> Saboga<br><br>
+
+  <p><strong>2.</strong> ¿En qué golfo se encuentra el Archipiélago de Las Perlas?</p>
+  <input type="radio" name="q2" value="Panamá"> Golfo de Panamá<br>
+  <input type="radio" name="q2" value="Chiriquí"> Golfo de Chiriquí<br>
+  <input type="radio" name="q2" value="San Blas"> Golfo de San Blas<br><br>
+
+  <button onclick="checarRespuestas()">Verificar respuestas</button>
   <div class="respuesta" id="resultado"></div>
 </div>
 
 <script>
-function checarRespuesta() {
-  const radios = document.getElementsByName('q1');
-  let respuesta = '';
-  for (let r of radios) {
-    if (r.checked) {
-      respuesta = r.value;
+function checarRespuestas() {
+  const respuestas = {
+    q1: "Contadora",
+    q2: "Panamá"
+  };
+  let correctas = 0;
+  for (let clave in respuestas) {
+    const seleccionada = document.querySelector(`input[name="${clave}"]:checked`);
+    if (seleccionada && seleccionada.value === respuestas[clave]) {
+      correctas++;
     }
   }
-  const resDiv = document.getElementById('resultado');
-  if (respuesta === 'Contadora') {
-    resDiv.textContent = '¡Correcto! Contadora es famosa por sus playas y hoteles.';
-    resDiv.style.color = 'green';
-  } else if (respuesta === '') {
-    resDiv.textContent = 'Por favor selecciona una opción.';
-    resDiv.style.color = 'orange';
+  const resultado = document.getElementById("resultado");
+  if (correctas === 2) {
+    resultado.textContent = "🎉 ¡Excelente! Has respondido todo correctamente.";
+    resultado.style.color = "green";
   } else {
-    resDiv.textContent = 'Incorrecto. Intenta de nuevo.';
-    resDiv.style.color = 'red';
+    resultado.textContent = `Has acertado ${correctas} de 2 respuestas. ¡Sigue intentando!`;
+    resultado.style.color = "orange";
   }
 }
 </script>
