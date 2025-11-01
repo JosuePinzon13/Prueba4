@@ -2,159 +2,213 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Archipiélago de Las Perlas</title>
+<title>Archipiélago de Las Perlas — Panamá</title>
 <style>
   body {
     font-family: 'Poppins', Arial, sans-serif;
-    background: linear-gradient(to bottom, #a0e9ff, #ffffff);
     margin: 0;
     padding: 0;
-    text-align: center;
+    background: linear-gradient(to bottom, #a8dadc, #f1faee);
     color: #023047;
+    overflow-x: hidden;
   }
 
   header {
     background-color: #0077b6;
     color: white;
-    padding: 20px 0;
-    font-size: 2em;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: center;
+    padding: 25px 10px;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
 
-  .descripcion {
-    margin: 20px auto;
-    width: 80%;
-    max-width: 700px;
-    background: #caf0f8;
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  section {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   }
 
-  .descripcion img {
+  h2 {
+    color: #0077b6;
+    border-bottom: 2px solid #00b4d8;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero img {
     width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    max-width: 800px;
+    border-radius: 15px;
+    margin-top: 15px;
   }
 
   .mapa {
     position: relative;
-    width: 80%;
-    max-width: 600px;
+    width: 100%;
+    height: 420px;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/3/3b/Las_Perlitas_Panama_Map.png') no-repeat center/contain;
     margin: 30px auto;
-    height: 400px;
-    background-color: #90e0ef;
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
   }
 
   .isla {
     position: absolute;
-    background-color: #ffde7d;
+    width: 35px;
+    height: 35px;
+    background: #ffb703;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.3s, background 0.3s;
   }
   .isla:hover {
     transform: scale(1.3);
+    background: #fb8500;
   }
-
-  /* Tooltip */
   .isla::after {
     content: attr(data-info);
     position: absolute;
-    bottom: 120%;
+    bottom: 130%;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.75);
-    color: #fff;
+    background: rgba(0,0,0,0.8);
+    color: white;
     padding: 5px 8px;
     border-radius: 5px;
-    font-size: 0.8em;
-    white-space: nowrap;
     opacity: 0;
+    font-size: 0.8em;
     pointer-events: none;
     transition: opacity 0.3s;
   }
-
   .isla:hover::after {
     opacity: 1;
   }
 
-  #quiz {
-    margin: 30px auto;
-    width: 80%;
-    max-width: 500px;
+  .quiz {
     text-align: left;
-    background: #e0fbfc;
+    background: #caf0f8;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-top: 30px;
   }
 
   button {
     background-color: #0077b6;
     color: white;
     border: none;
-    padding: 10px 14px;
-    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
     cursor: pointer;
-    border-radius: 6px;
     font-weight: bold;
   }
-
   button:hover {
     background-color: #023e8a;
   }
 
   .respuesta {
-    margin-top: 10px;
+    margin-top: 15px;
     font-weight: bold;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #0077b6;
+    color: white;
+    margin-top: 50px;
   }
 </style>
 </head>
 <body>
-<header>Archipiélago de Las Perlas</header>
 
-<div class="descripcion">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Contadora_Island_Beach.jpg" alt="Isla Contadora">
-  <p>El <strong>Archipiélago de Las Perlas</strong> está ubicado en el Golfo de Panamá y está conformado por más de 200 islas e islotes. 
-  Se caracteriza por sus playas de arena blanca, aguas cristalinas y gran biodiversidad marina. 
-  Algunas de las islas más conocidas son <em>Contadora</em>, <em>San José</em>, <em>Saboga</em> y <em>Chapera</em>.</p>
-</div>
+<header>🌴 Archipiélago de Las Perlas — Panamá 🐚</header>
 
-<div class="mapa">
-  <div class="isla" style="top: 60px; left: 90px;" data-info="Isla Contadora"></div>
-  <div class="isla" style="top: 150px; left: 220px;" data-info="Isla San José"></div>
-  <div class="isla" style="top: 250px; left: 340px;" data-info="Isla Saboga"></div>
-  <div class="isla" style="top: 100px; left: 430px;" data-info="Isla Chapera"></div>
-</div>
+<section class="hero">
+  <h2>Un Paraíso Natural</h2>
+  <p>El Archipiélago de Las Perlas está formado por más de 90 islas y 130 islotes en el Golfo de Panamá. 
+  Su nombre proviene de la abundancia de perlas halladas en la zona durante el dominio español. 
+  Es un paraíso turístico reconocido por sus playas blancas, aguas turquesas y biodiversidad marina.</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Contadora_Island_Beach.jpg" alt="Playa en Isla Contadora">
+</section>
 
-<div id="quiz">
-  <h2>Mini Quiz</h2>
-  <p><strong>1.</strong> ¿Cuál de estas islas es famosa por sus playas y hoteles?</p>
-  <input type="radio" name="q1" value="Contadora"> Contadora<br>
-  <input type="radio" name="q1" value="San José"> San José<br>
-  <input type="radio" name="q1" value="Saboga"> Saboga<br><br>
+<section>
+  <h2>Mapa Interactivo</h2>
+  <p>Pasa el cursor por las islas para conocerlas:</p>
+  <div class="mapa">
+    <div class="isla" style="top: 60%; left: 35%;" data-info="Isla Contadora — famosa por sus playas y hoteles."></div>
+    <div class="isla" style="top: 45%; left: 50%;" data-info="Isla San José — segunda más grande, ideal para ecoturismo."></div>
+    <div class="isla" style="top: 70%; left: 55%;" data-info="Isla del Rey — la más grande del archipiélago."></div>
+    <div class="isla" style="top: 50%; left: 65%;" data-info="Isla Saboga — pequeña y tranquila, perfecta para explorar."></div>
+  </div>
+</section>
 
-  <p><strong>2.</strong> ¿En qué golfo se encuentra el Archipiélago de Las Perlas?</p>
-  <input type="radio" name="q2" value="Panamá"> Golfo de Panamá<br>
-  <input type="radio" name="q2" value="Chiriquí"> Golfo de Chiriquí<br>
-  <input type="radio" name="q2" value="San Blas"> Golfo de San Blas<br><br>
+<section>
+  <h2>Historia y Cultura</h2>
+  <p>Durante la época colonial, las Islas de Las Perlas fueron famosas por la extracción de perlas, de donde proviene su nombre. 
+  En los escritos del cronista Pedro Cieza de León (1553), se menciona que estas islas estaban habitadas por indígenas y luego administradas por españoles. 
+  Hoy son un símbolo de riqueza natural y cultural de Panamá.</p>
+  <p><strong>Descubrimiento:</strong> Se menciona por primera vez en los viajes hacia Perú, y sirvió como punto estratégico durante el comercio colonial.</p>
+</section>
 
-  <button onclick="checarRespuestas()">Verificar respuestas</button>
+<section>
+  <h2>Comidas Típicas</h2>
+  <ul>
+    <li>🐟 Ceviche panameño de pescado fresco.</li>
+    <li>🍤 Camarones al ajillo y arroces con mariscos.</li>
+    <li>🐚 Pescado frito con patacones.</li>
+    <li>🥥 Bebidas tropicales y agua de coco.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Vida Marina y Actividades</h2>
+  <p>Las Perlas es uno de los mejores lugares de pesca deportiva en el mundo. 
+  También es hábitat para tortugas, pelícanos y delfines. 
+  Entre las actividades destacan:</p>
+  <ul>
+    <li>Buceo y snorkel en arrecifes.</li>
+    <li>Avistamiento de ballenas y tortugas.</li>
+    <li>Senderismo, kayaks y recorridos ecológicos.</li>
+  </ul>
+</section>
+
+<section class="quiz">
+  <h2>🎯 Mini Quiz — ¿Cuánto sabes?</h2>
+  <p><strong>1.</strong> ¿Por qué se llama Archipiélago de Las Perlas?</p>
+  <input type="radio" name="q1" value="por perlas"> Por la abundancia de perlas encontradas.<br>
+  <input type="radio" name="q1" value="por arenas"> Por sus playas de arena blanca.<br><br>
+
+  <p><strong>2.</strong> ¿Cuál es la isla más desarrollada turísticamente?</p>
+  <input type="radio" name="q2" value="Contadora"> Isla Contadora<br>
+  <input type="radio" name="q2" value="San José"> Isla San José<br><br>
+
+  <p><strong>3.</strong> ¿En qué golfo se encuentra el archipiélago?</p>
+  <input type="radio" name="q3" value="Panamá"> Golfo de Panamá<br>
+  <input type="radio" name="q3" value="Chiriquí"> Golfo de Chiriquí<br><br>
+
+  <button onclick="verificar()">Verificar respuestas</button>
   <div class="respuesta" id="resultado"></div>
-</div>
+</section>
+
+<footer>
+  © 2025 Proyecto Escolar — Archipiélago de Las Perlas | Hecho con 💙 por <strong>Geo Panamá</strong>
+</footer>
 
 <script>
-function checarRespuestas() {
+function verificar() {
   const respuestas = {
-    q1: "Contadora",
-    q2: "Panamá"
+    q1: "por perlas",
+    q2: "Contadora",
+    q3: "Panamá"
   };
   let correctas = 0;
   for (let clave in respuestas) {
@@ -163,13 +217,13 @@ function checarRespuestas() {
       correctas++;
     }
   }
-  const resultado = document.getElementById("resultado");
-  if (correctas === 2) {
-    resultado.textContent = "🎉 ¡Excelente! Has respondido todo correctamente.";
-    resultado.style.color = "green";
+  const res = document.getElementById("resultado");
+  if (correctas === 3) {
+    res.textContent = "🎉 ¡Excelente! Conoces muy bien el Archipiélago de Las Perlas.";
+    res.style.color = "green";
   } else {
-    resultado.textContent = `Has acertado ${correctas} de 2 respuestas. ¡Sigue intentando!`;
-    resultado.style.color = "orange";
+    res.textContent = `Has acertado ${correctas} de 3 preguntas. ¡Sigue aprendiendo!`;
+    res.style.color = "orange";
   }
 }
 </script>
